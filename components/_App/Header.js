@@ -9,15 +9,22 @@ Router.onRouteChangeError = () => nProgress.done();
 
 function Header() {
   const router = useRouter();
-  const user = true;
+  const user = false;
 
   function isActive(route) {
     return route === router.pathname;
   }
 
   return (
-    <Menu fluid id="menu" inverted>
-      <Container text>
+    <Menu fluid id="menu" inverted borderless>
+      <Container
+        // text
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          flexWrap: "wrap",
+        }}
+      >
         <Link href="/">
           <Menu.Item active={isActive("/")}>
             <Image
