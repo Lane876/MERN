@@ -16,6 +16,8 @@
     "bcrypt": "^5.0.0",
     "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
+    "mongodb-tools": "^1.0.6",
+    "mongoimport": "^1.0.6",
     "mongoose": "^5.9.20",
     "next": "^9.4.4",
     "nookies": "^2.3.2",
