@@ -1,5 +1,6 @@
 import { Menu, Container, Image, Icon } from "semantic-ui-react";
 import Link from "next/link";
+import { withRouter } from "next/router";
 import Router, { useRouter } from "next/dist/client/router";
 import nProgress from "nprogress";
 
@@ -16,7 +17,7 @@ function Header() {
   }
 
   return (
-    <Menu fluid id="menu" inverted borderless>
+    <Menu fluid id="menu" inverted borderless stackable>
       <Container
         // text
         style={{
@@ -85,4 +86,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default withRouter(Header);
