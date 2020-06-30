@@ -1,43 +1,36 @@
 import { Menu, Container, Image, Icon } from "semantic-ui-react";
 import Link from "next/link";
-import { withRouter } from "next/router";
-import Router, { useRouter } from "next/dist/client/router";
-import nProgress from "nprogress";
+import Router, { useRouter } from "next/router";
+import NProgress from "nprogress";
 
-Router.onRouteChangeStart = () => nProgress.start();
-Router.onRouteChangeComplete = () => nProgress.done();
-Router.onRouteChangeError = () => nProgress.done();
+Router.onRouteChangeStart = () => NProgress.start();
+Router.onRouteChangeComplete = () => NProgress.done();
+Router.onRouteChangeError = () => NProgress.done();
 
 function Header() {
   const router = useRouter();
-  const user = false;
+  const user = true;
 
   function isActive(route) {
     return route === router.pathname;
   }
 
   return (
-    <Menu fluid id="menu" inverted borderless stackable>
-      <Container
-        // text
-        style={{
-          display: "flex",
-          justifyContent: "space-evenly",
-          flexWrap: "wrap",
-        }}
-      >
+    <Menu stackable fluid id="menu" inverted>
+      <Container text>
         <Link href="/">
-          <Menu.Item active={isActive("/")}>
+          <Menu.Item header active={isActive("/")}>
             <Image
               size="mini"
               src="/static/logo.svg"
               style={{ marginRight: "1em" }}
             />
-            MERN
+            ReactReserve
           </Menu.Item>
         </Link>
+
         <Link href="/cart">
-          <Menu.Item active={isActive("/cart")}>
+          <Menu.Item header active={isActive("/cart")}>
             <Icon name="cart" size="large" />
             Cart
           </Menu.Item>
@@ -45,7 +38,7 @@ function Header() {
 
         {user && (
           <Link href="/create">
-            <Menu.Item active={isActive("/create")}>
+            <Menu.Item header active={isActive("/create")}>
               <Icon name="add square" size="large" />
               Create
             </Menu.Item>
@@ -55,28 +48,30 @@ function Header() {
         {user ? (
           <>
             <Link href="/account">
-              <Menu.Item active={isActive("/account")}>
+              <Menu.Item header active={isActive("/account")}>
                 <Icon name="user" size="large" />
                 Account
               </Menu.Item>
             </Link>
-            <Menu.Item>
+
+            <Menu.Item header>
               <Icon name="sign out" size="large" />
-              Log Out
+              Logout
             </Menu.Item>
           </>
         ) : (
           <>
             <Link href="/login">
-              <Menu.Item active={isActive("/login")}>
+              <Menu.Item header active={isActive("/login")}>
                 <Icon name="sign in" size="large" />
                 Login
               </Menu.Item>
             </Link>
+
             <Link href="/signup">
-              <Menu.Item active={isActive("/signup")}>
+              <Menu.Item header active={isActive("/signup")}>
                 <Icon name="signup" size="large" />
-                Sign Up
+                Signup
               </Menu.Item>
             </Link>
           </>
@@ -86,4 +81,4 @@ function Header() {
   );
 }
 
-export default withRouter(Header);
+export default Header;

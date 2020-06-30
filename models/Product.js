@@ -27,5 +27,18 @@ const ProductSchema = new mongoose.Schema({
   },
 });
 
+// if (!modelAlreadyDeclared()) {
+//   const Product = mongoose.model("Product", ProductSchema);
+// }
+
+// function modelAlreadyDeclared() {
+//   try {
+//     mongoose.model("Product"); // it throws an error if the model is still not defined
+//     return true;
+//   } catch (e) {
+//     return false;
+//   }
+// }
+
 export default mongoose.models.Product ||
   mongoose.model("Product", ProductSchema);
